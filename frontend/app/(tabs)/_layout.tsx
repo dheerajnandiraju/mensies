@@ -1,44 +1,52 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { Tabs } from "expo-router";
+import { StyleSheet } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { TabBar } from "../components/TabBar";
+import Feather from '@expo/vector-icons/Feather';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
+    <Tabs tabBar={props => <TabBar {...props} />} 
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
+        headerShown: false
+      }}
+    >
+      <Tabs.Screen 
+        name="index" 
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="home" size={size} color={color} /> // 🏠 Home Icon
+          ),
+          tabBarLabel: "Home"
+        }} 
       />
-      <Tabs.Screen
-        name="explore"
+      <Tabs.Screen 
+        name="notification" 
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="bell" size={24} color="black" />
+          ),
+          tabBarLabel: "Home"
+        }} 
+      />
+      <Tabs.Screen 
+        name="chatbot" 
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="message-square" size={24} color="black" />
+          ),
+          tabBarLabel: "Home"
+        }} 
+      />
+      <Tabs.Screen 
+        name="page1" 
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="user" size={size} color={color} /> // 👤 User Icon
+          ),
+          tabBarLabel: "Profile"
+        }} 
       />
     </Tabs>
   );
