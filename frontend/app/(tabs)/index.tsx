@@ -1,14 +1,25 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import {Link} from 'expo-router'
 import { StatusBar } from 'expo-status-bar';
+import CalendarComponent from "../components/calendarComponent";
+import { useState } from "react";
 
 export default function Index() {
+  const [selected,setSelected]=useState('menstrual')
   return (
     <View
       style={ styles.container}
     >
        <StatusBar style="dark" />
-      <Text style={styles.text}>Edit app/index.tsx to edit this screen.</Text>
+      <View style={styles.Calender}>
+        <Text style={styles.heading}>Calendar</Text>
+        <CalendarComponent selected={selected}/>
+      </View>
+      <TouchableOpacity onPress={()=>setSelected(selected==='menstrual'?'conception':'menstrual')}>
+        <Text>
+          {selected}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -17,13 +28,20 @@ const styles = StyleSheet.create({
   container :{
     flex:1,
     backgroundColor: '#C2DED1',
-    alignItems:'center',
-    justifyContent:'center'
+    paddingTop:50,
+    padding:10
   },
-  text:{
-    color:'#fff'
+  heading:{
+    color:'black',
+    fontWeight: 600
   },
   button:{
     color:'#fff'
+  },
+  Calender:{
+    backgroundColor:'#ECE5C7',
+    borderWidth:1,
+    borderRadius: 10,
+    padding:10
   }
 })
