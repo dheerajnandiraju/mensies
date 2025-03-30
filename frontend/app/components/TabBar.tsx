@@ -49,7 +49,7 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             onPress={onPress}
             style={{ flex: 1, alignItems: 'center' }} // Align icons and text
           >
-            <View style={styles.circle}>
+            <View style={isFocused?styles.circle:null}>
             {IconComponent} 
             </View>
             {/* 🔹 Render the icon */}
