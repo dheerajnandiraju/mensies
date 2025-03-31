@@ -6,7 +6,7 @@ export default function Notification() {
     <View
       style={ styles.container}
     >
-      <Text style={styles.text}>page1.</Text>
+      <Text style={styles.text}>notification</Text>
     </View>
   );
 }

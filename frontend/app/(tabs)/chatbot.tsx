@@ -6,7 +6,7 @@ export default function Chatbot() {
     <View
       style={ styles.container}
     >
-      <Text style={styles.text}>page1.</Text>
+      <Text style={styles.text}>chatbot</Text>
     </View>
   );
 }
