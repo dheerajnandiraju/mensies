@@ -1,14 +1,16 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity,ScrollView } from "react-native";
 import {Link} from 'expo-router'
 import { StatusBar } from 'expo-status-bar';
 import CalendarComponent from "../components/calendarComponent";
 import { useState } from "react";
 import Mood from "../components/mood";
+import Symptom from "../components/symptom";
+//import { ScrollView } from "react-native-gesture-handler";
 
 export default function Index() {
   const [selected,setSelected]=useState('menstrual')
   return (
-    <View
+    <ScrollView
       style={ styles.container}
     >
        <StatusBar style="dark" />
@@ -32,7 +34,10 @@ export default function Index() {
       </View>
 
       <Mood/>
-    </View>
+
+      <Symptom/>
+  
+    </ScrollView>
 
 
   );
@@ -43,7 +48,8 @@ const styles = StyleSheet.create({
     flex:1,
     backgroundColor: '#C2DED1',
     paddingTop:50,
-    padding:10
+    padding:10,
+   
   },
   heading:{
     fontSize:20,

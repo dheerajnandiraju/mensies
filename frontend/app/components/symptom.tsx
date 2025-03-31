@@ -2,47 +2,47 @@ import React from 'react';
 import {  Alert,Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from 'expo-router';
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import {MaterialCommunityIcons, FontAwesome5,Fontisto} from '@expo/vector-icons';
 
-export default function Mood() {
+export default function Symptom() {
   const router = useRouter();
 
 const currentMood=(mood:string)=>{
         console.log(mood);
-        Alert.alert("mood selected: " + mood)
+        Alert.alert("Symptoms selected: " + mood)
       }
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Text style={styles.heading}>Mood</Text>
-        <TouchableOpacity onPress={() => router.push('/components/subpages/moods')}>
+        <Text style={styles.heading}>Symptoms</Text>
+        <TouchableOpacity onPress={() => router.push('/components/subpages/symptoms')}>
           <AntDesign style={{ marginRight: 5 }} name="doubleright" size={24} color="black" />
         </TouchableOpacity>
       </View>
       <View style={styles.moods}>
-        <TouchableOpacity onPress={()=>currentMood('Irritable')} style={styles.button}>
-        <FontAwesome5 name="angry" size={24} color="black" />
-        <Text>Irritable</Text>
+        <TouchableOpacity onPress={()=>currentMood('Cramps')} style={styles.button}>
+        <FontAwesome5 name="user-injured" size={24} color="black" />
+        <Text>Cramps</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>currentMood('Emotional')} style={styles.button}>
-        <FontAwesome5 name="sad-cry" size={24} color="black" />
-        <Text>Emotional</Text>
+        <TouchableOpacity onPress={()=>currentMood('Back Pain')} style={styles.button}>
+        <FontAwesome5 name="tired" size={24} color="black" />
+        <Text>Back Pain</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>currentMood('Anxious')} style={styles.button}>
-        <FontAwesome5 name="frown" size={24} color="black" />
-        <Text>Anxious</Text>
+        <TouchableOpacity onPress={()=>currentMood('Bloating')} style={styles.button}>
+        <MaterialCommunityIcons name="emoticon-sick-outline" size={24} color="black" />
+        <Text>Bloating</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>currentMood('Sad')} style={styles.button}>
-        <FontAwesome5 name="sad-tear" size={24} color="black" />
-        <Text>Sad</Text>
+        <TouchableOpacity onPress={()=>currentMood('Fatigue')} style={styles.button}>
+        <Fontisto name="open-mouth" size={24} color="black" />
+        <Text>Fatigue</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>currentMood('Frustrated')} style={styles.button}>
-        <FontAwesome5 name="grimace" size={24} color="black" />
-        <Text>Frustrated</Text>
+        <TouchableOpacity onPress={()=>currentMood('Drowsiness')} style={styles.button}>
+        <MaterialCommunityIcons name="sleep" size={24} color="black" />
+        <Text>Drowsiness</Text>
         </TouchableOpacity>
         
       </View>
