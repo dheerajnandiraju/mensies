@@ -3,7 +3,7 @@
     import { useEffect,useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { MaterialIcons,MaterialCommunityIcons,Ionicons,Fontisto } from '@expo/vector-icons';
+import { MaterialIcons,MaterialCommunityIcons,Ionicons,Fontisto,FontAwesome } from '@expo/vector-icons';
 
     export default function Sysmptoms() {
      
@@ -36,7 +36,7 @@ import { MaterialIcons,MaterialCommunityIcons,Ionicons,Fontisto } from '@expo/ve
         </TouchableOpacity>
 
         <TouchableOpacity onPress={()=>currentMood('Bloating')} style={styles.button}>
-        <MaterialCommunityIcons name="emoticon-sick-outline" size={24} color="black" />
+        <Ionicons name="balloon-outline" size={24} color="black" />
         <Text>Bloating</Text>
         </TouchableOpacity>
 
@@ -48,6 +48,31 @@ import { MaterialIcons,MaterialCommunityIcons,Ionicons,Fontisto } from '@expo/ve
         <TouchableOpacity onPress={()=>currentMood('Drowsiness')} style={styles.button}>
         <MaterialCommunityIcons name="sleep" size={24} color="black" />
         <Text>Drowsiness</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>currentMood('Mood Swings')} style={styles.button}>
+        <MaterialIcons name="mood-bad" size={24} color="black" />
+        <Text>Mood swings</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>currentMood('Breast tenderness')} style={styles.button}>
+        <FontAwesome name="heart-o" size={24} color="black" />
+        <Text>Breast tenderness</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>currentMood('Food cravings')} style={styles.button}>
+        <Ionicons name="fast-food-outline" size={24} color="black" />
+        <Text>Food cravings</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>currentMood('Acne')} style={styles.button}>
+        <MaterialCommunityIcons name="face-woman-outline" size={24} color="black" />
+        <Text>Acne</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>currentMood('Nausea')} style={styles.button}>
+        <Ionicons name="sad-outline" size={24} color="black" />
+        <Text>Nausea</Text>
         </TouchableOpacity>
         
         
@@ -77,9 +102,9 @@ import { MaterialIcons,MaterialCommunityIcons,Ionicons,Fontisto } from '@expo/ve
     moods: {
         
         flex:1,
-        columnGap: 20,
+        columnGap: 30,
         rowGap:30,
-        justifyContent: 'space-evenly',
+        justifyContent: 'flex-start',
         backgroundColor: '#CDC2AE',
         padding: 10,
         flexDirection:'row',

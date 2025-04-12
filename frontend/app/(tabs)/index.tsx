@@ -5,6 +5,7 @@ import CalendarComponent from "../components/calendarComponent";
 import { useState } from "react";
 import Mood from "../components/mood";
 import Symptom from "../components/symptom";
+import Sleep from "../components/sleep";
 //import { ScrollView } from "react-native-gesture-handler";
 
 export default function Index() {
@@ -36,6 +37,8 @@ export default function Index() {
       <Mood/>
 
       <Symptom/>
+
+      <Sleep/>
   
     </ScrollView>
 
