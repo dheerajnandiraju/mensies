@@ -32,6 +32,9 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 
   if (isKeyboardVisible) return null;
 
+  const currentRouteName = state.routes[state.index].name;
+  if (isKeyboardVisible || currentRouteName === 'chatbot') return null;
+
   return (
     <KeyboardAvoidingView style={styles.container}>
       {state.routes.map((route, index) => {
@@ -67,16 +70,15 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 
         return (
           <PlatformPressable
-            key={route.name}
-            href={buildHref(route.name, route.params)}
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarButtonTestID}
-            onPress={onPress}
-            style={{ flex: 1, alignItems: 'center' }}
-          >
-            <View style={isFocused ? styles.circle : null}>{IconComponent}</View>
-          </PlatformPressable>
+          key={route.name}
+          accessibilityState={isFocused ? { selected: true } : {}}
+          accessibilityLabel={options.tabBarAccessibilityLabel}
+          testID={options.tabBarButtonTestID}
+          onPress={onPress}
+          style={{ flex: 1, alignItems: 'center' }}
+        >
+          <View style={isFocused ? styles.circle : null}>{IconComponent}</View>
+        </PlatformPressable>
         );
       })}
     </KeyboardAvoidingView>

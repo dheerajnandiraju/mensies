@@ -4,6 +4,7 @@
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { MaterialIcons,MaterialCommunityIcons,Ionicons,Fontisto,FontAwesome } from '@expo/vector-icons';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
     export default function Sysmptoms() {
      
@@ -86,34 +87,36 @@ import { MaterialIcons,MaterialCommunityIcons,Ionicons,Fontisto,FontAwesome } fr
     }
 
    
-    const styles = StyleSheet.create({
-    container: {
-        flex:1,
-        backgroundColor: '#ECE5C7',
-        borderRadius: 10,
-        padding: 30,
-        borderWidth: 1
-    },
-    heading: {
-        fontSize: 20,
-        color: 'black',
-        fontWeight: '600'
-    },
-    moods: {
-        
-        flex:1,
-        columnGap: 30,
-        rowGap:30,
-        justifyContent: 'flex-start',
-        backgroundColor: '#CDC2AE',
-        padding: 10,
-        flexDirection:'row',
-        flexWrap:'wrap',
-        borderRadius: 10,
-        borderWidth: 1
-    },
-
-    button:{
-        alignItems:'center',
-    }
-    });
+    
+        const styles = StyleSheet.create({
+            container: {
+              flex: 1,
+              backgroundColor: '#ECE5C7',
+              borderRadius: wp('2.5%'),
+              padding: wp('6%'),
+              borderWidth: 1,
+            },
+            heading: {
+              fontSize: wp('3.5%'),
+              color: 'black',
+           
+            },
+            moods: {
+              flex: 1,
+              columnGap: wp('5%'),
+              rowGap: hp('2.5%'),
+              justifyContent: 'space-evenly',
+              backgroundColor: '#CDC2AE',
+              padding: wp('3%'),
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              borderRadius: wp('2.5%'),
+              borderWidth: 1,
+            },
+            button: {
+              alignItems: 'center',
+              width: wp('22%'),
+              marginBottom: hp('1.5%'),
+            },
+          });
+          

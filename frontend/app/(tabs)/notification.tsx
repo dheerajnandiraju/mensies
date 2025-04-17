@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     alignSelf: 'center',
-    fontSize: wp('4%'),
+    fontSize: wp('5%'),
     color: 'black',
     fontWeight: '800',
   },
@@ -200,17 +200,17 @@ const styles = StyleSheet.create({
   },
   switchLabel: {
     marginRight: wp('2%'),
-    fontSize: wp('3%'),
+    fontSize: wp('4%'),
     color: '#333',
     fontWeight: '800',
   },
   switchContent: {
     width: wp('60%'),
-    fontSize: wp('2.8%'),
+    fontSize: wp('3.5%'),
     color: '#333',
   },
   switchContent1: {
-    fontSize: wp('2.8%'),
+    fontSize: wp('3.5%'),
     color: '#333',
   },
   descriptionTrue: {
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     borderRadius: wp('2%'),
     textAlign: 'center',
     marginLeft: wp('2%'),
-    fontSize: wp('3%'),
+    fontSize: wp('4%'),
     color: '#333',
     backgroundColor: '#fff',
   },
@@ -256,11 +256,11 @@ const styles = StyleSheet.create({
     borderRadius: wp('2%'),
   },
   notificationText: {
-    fontSize: wp('3.5%'),
+    fontSize: wp('4%'),
     color: '#333',
   },
   noNotificationsText: {
-    fontSize: wp('3.5%'),
+    fontSize: wp('4%'),
     color: '#666',
     textAlign: 'center',
     padding: wp('3%'),

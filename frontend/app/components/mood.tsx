@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     marginBottom: hp('2%'),
   },
   heading: {
-    fontSize: wp('3.5%'),
+    fontSize: wp('5%'),
     color: 'black',
     fontWeight: '600',
   },
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
    // marginBottom: hp('2%'),
   },
   text:{
-    fontSize: wp('2.5%'),
+    fontSize: wp('3.5%'),
     color: 'black',
   }
 });

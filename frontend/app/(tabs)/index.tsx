@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     padding: wp('4%'),
   },
   heading: {
-    fontSize: wp('3.5%'),
+    fontSize: wp('5%'),
     color: 'black',
     fontWeight: '600',
   },
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp('1%'),
     borderRadius: wp('12%'),
     width: wp('20%'),
-    fontWeight: '300',
+    fontWeight: '600',
   },
   Calender: {
     backgroundColor: '#ECE5C7',
@@ -106,6 +106,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp('3%'),
     borderWidth: 1,
     elevation: 5,
+    width:wp('45%'),
+    alignItems:'center'
   },
   phaseButtonInactive: {
     backgroundColor: '#ECE5C7',
@@ -113,9 +115,12 @@ const styles = StyleSheet.create({
     paddingVertical: hp('2%'),
     paddingHorizontal: wp('3%'),
     borderWidth: 1,
+     width:wp('45%'),
+    alignItems:'center'
   },
   phaseButtonText: {
-    fontSize: wp('3%'),
+    fontSize: wp('4%'),
+    fontWeight:'600'
   },
   modalButtons: {
     flexDirection: 'row',
@@ -138,7 +143,7 @@ const styles = StyleSheet.create({
   },
   modelText: {
     fontWeight: '600',
-    fontSize: wp('3%'),
+    fontSize: wp('4%'),
     textAlign: 'center',
   },
 });

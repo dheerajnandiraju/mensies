@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     marginBottom: hp('18%'),
   },
   heading: {
-    fontSize: wp('3.5%'),
+    fontSize: wp('5%'),
     color: 'black',
     fontWeight: '600',
   },
@@ -197,12 +197,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   label: {
-    fontSize: wp('3%'),
+    fontSize: wp('4%'),
     fontWeight: '600',
     marginBottom: hp('1%'),
   },
   timePlaceholder: {
-    fontSize: wp('2.5%'),
+    fontSize: wp('4%'),
     color: '#555',
   },
   sleepDuration: {
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp('10%'),
     borderRadius: wp('10%'),
     fontWeight: '700',
-    fontSize: wp('3%'),
+    fontSize: wp('3.5%'),
   },
   modalContainer: {
     flex: 1,

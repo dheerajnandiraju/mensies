@@ -159,7 +159,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
           borderWidth: 1,
         },
         heading: {
-          fontSize: wp('2.5%'),
+          fontSize: wp('3.5%'),
           color: 'black',
        
         },
