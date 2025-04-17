@@ -1,8 +1,10 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React,{useState} from 'react'
 import { Calendar } from 'react-native-calendars'
+import menstrualhook from '../hooks/menstrualDate'
 
 export default function CalendarComponent({selected}:{selected:String}) {
+  //const {date,setDate} = menstrualhook()
     
     
     const menstrualArray: string[] = ['2025-03-22', '2025-03-23','2025-03-24','2025-03-25','2025-04-22', '2025-04-23','2025-04-24','2025-04-25'];
@@ -28,6 +30,15 @@ export default function CalendarComponent({selected}:{selected:String}) {
       ...(i === conceptionArray.length - 1 && { endingDay: true }),
     };
     });
+
+    const today = new Date().toISOString().split('T')[0]
+
+
+    // if(menstrualArray.includes(today)){
+    //   setDate(true)}
+    // else
+    //   setDate(false)
+      
 
 
   return (

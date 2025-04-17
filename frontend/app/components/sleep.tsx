@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Alert, Text, View, StyleSheet, TouchableOpacity, TextInput, Modal } from 'react-native';
 import useSleepTime from '../hooks/sleepTime';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 export default function Sleep() {
   const { sleepTime, setSleepTime } = useSleepTime();
@@ -75,7 +77,7 @@ export default function Sleep() {
       <View style={styles.moods}>
         {sleepTime[0] === '' && sleepTime[1] === '' ? (
           <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={styles.label}>Enter your sleep</Text>
+              <Text style={styles.label}>Enter your sleep</Text>
             <Text style={styles.timePlaceholder}>From: --:--   To: --:--</Text>
           </View>
         ) : (
@@ -175,36 +177,36 @@ export default function Sleep() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ECE5C7',
-    borderRadius: 10,
-    padding: 10,
+    borderRadius: wp('2.5%'),
+    padding: wp('4%'),
     borderWidth: 1,
-    marginBottom: 150,
+    marginBottom: hp('18%'),
   },
   heading: {
-    fontSize: 20,
+    fontSize: wp('3.5%'),
     color: 'black',
     fontWeight: '600',
   },
   moods: {
     backgroundColor: '#CDC2AE',
-    padding: 10,
-    borderRadius: 10,
+    padding: wp('4%'),
+    borderRadius: wp('2.5%'),
     borderWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   label: {
-    fontSize: 16,
+    fontSize: wp('3%'),
     fontWeight: '600',
-    marginBottom: 5,
+    marginBottom: hp('1%'),
   },
   timePlaceholder: {
-    fontSize: 14,
+    fontSize: wp('2.5%'),
     color: '#555',
   },
   sleepDuration: {
-    fontSize: 25,
+    fontSize: wp('6%'),
     fontWeight: '700',
     color: '#333',
   },
@@ -212,10 +214,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#354259',
     color: 'white',
     textAlign: 'center',
-    paddingVertical: 10,
-    paddingHorizontal: 50,
-    borderRadius: 50,
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: wp('10%'),
+    borderRadius: wp('10%'),
     fontWeight: '700',
+    fontSize: wp('3%'),
   },
   modalContainer: {
     flex: 1,
@@ -225,8 +228,8 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: '#CDC2AE',
-    borderRadius: 10,
-    padding: 20,
+    borderRadius: wp('2.5%'),
+    padding: wp('5%'),
     width: '80%',
     alignItems: 'center',
   },
@@ -234,38 +237,40 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10,
+    marginTop: hp('1%'),
   },
   input: {
-    height: 40,
+    height: hp('5%'),
     borderWidth: 2,
-    padding: 10,
-    width: 60,
+    padding: wp('2%'),
+    width: wp('15%'),
     textAlign: 'center',
     fontWeight: '900',
     backgroundColor: '#fff',
-    borderRadius: 5,
+    borderRadius: wp('2%'),
+    fontSize: wp('3%'),
   },
   colon: {
     fontWeight: '900',
-    fontSize: 30,
-    marginHorizontal: 10,
+    fontSize: wp('8%'),
+    marginHorizontal: wp('2.5%'),
   },
   modalButtons: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: hp('2%'),
     justifyContent: 'space-between',
     width: '100%',
   },
   cancelButton: {
     backgroundColor: '#555',
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 50,
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: wp('8%'),
+    borderRadius: wp('10%'),
   },
   cancelButtonText: {
     color: 'white',
     fontWeight: '600',
     textAlign: 'center',
+    fontSize: wp('3.5%'),
   },
 });

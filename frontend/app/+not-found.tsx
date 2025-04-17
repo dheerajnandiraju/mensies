@@ -5,7 +5,7 @@ export default function Notfound(){
     return(
         <View style={styles.container}>
             <Text style={styles.text}>wrong page</Text>
-            <Link style={styles.button} href="/tabs">home</Link>
+            {/* <Link style={styles.button} href="/tabs">home</Link> */}
         </View>
     )
 }

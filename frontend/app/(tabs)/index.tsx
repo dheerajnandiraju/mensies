@@ -1,15 +1,26 @@
 import { Text, View, StyleSheet, TouchableOpacity,ScrollView } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Link} from 'expo-router'
 import { StatusBar } from 'expo-status-bar';
 import CalendarComponent from "../components/calendarComponent";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Mood from "../components/mood";
 import Symptom from "../components/symptom";
 import Sleep from "../components/sleep";
 //import { ScrollView } from "react-native-gesture-handler";
+import menstrualDates from '../hooks/menstrualDate'
 
 export default function Index() {
+  const {date,setDate} = menstrualDates()
+  const [confirmation,setConfirmation]=useState(false)
   const [selected,setSelected]=useState('menstrual')
+
+
+useEffect(()=>{
+  if(!date)
+      setConfirmation(false)
+},[date])
+
   return (
     <ScrollView
       style={ styles.container}
@@ -18,19 +29,27 @@ export default function Index() {
       <View style={styles.Calender}>
         <Text style={styles.heading}>Calendar</Text>
         <CalendarComponent selected={selected}/>
+         {date && !confirmation &&
+         (<View style={styles.modalButtons}>
+          <Text style={styles.modelText}>Did you get {"\n"} your period?</Text>
+                      <TouchableOpacity >
+                        <Text onPress={()=>setConfirmation(true)} style={styles.button}>Yes</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={()=>setConfirmation(false)}
+                        style={styles.cancelButton}
+                      >
+                        <Text style={styles.cancelButtonText}>No</Text>
+                      </TouchableOpacity>
+                    </View>)}
       </View>
-      {/* <TouchableOpacity onPress={()=>setSelected(selected==='menstrual'?'conception':'menstrual')}>
-        <Text>
-          {selected}
-        </Text>
-      </TouchableOpacity> */}
       <View style={styles.buttonContainer}>
       <TouchableOpacity style={selected=='menstrual'?styles.phaseButtonActive:styles.phaseButtonInactive}  onPress={()=>setSelected('menstrual')}>
         <Text style={styles.phaseButtonText}>menstrual Phase</Text>
       </TouchableOpacity>
       
       <TouchableOpacity style={selected=='conception'?styles.phaseButtonActive:styles.phaseButtonInactive}  onPress={()=>setSelected('conception')}>
-        <Text>conception Phase</Text>
+        <Text style={styles.phaseButtonText}>conception Phase</Text>
       </TouchableOpacity>
       </View>
 
@@ -47,60 +66,79 @@ export default function Index() {
 }
 
 const styles = StyleSheet.create({
-  container :{
-    flex:1,
+  container: {
+    flex: 1,
     backgroundColor: '#C2DED1',
-    paddingTop:50,
-    padding:10,
-   
+    paddingTop: hp('5%'),
+    padding: wp('4%'),
   },
-  heading:{
-    fontSize:20,
-    color:'black',
-    fontWeight: 600
+  heading: {
+    fontSize: wp('3.5%'),
+    color: 'black',
+    fontWeight: '600',
   },
-  button:{
-    color:'#fff'
+  button: {
+    backgroundColor: '#354259',
+    color: 'white',
+    textAlign: 'center',
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: wp('1%'),
+    borderRadius: wp('12%'),
+    width: wp('20%'),
+    fontWeight: '300',
   },
-  Calender:{
-    backgroundColor:'#ECE5C7',
-    borderWidth:1,
-    borderRadius: 10,
-    padding:10
-  },
-
-  buttonContainer:{
-    //flex:1,
-    marginVertical :10,
-    flexDirection:'row',
-    justifyContent: 'space-between'
-  },
-  phaseButtonActive:{
-    backgroundColor: '#CDC2AE',
-    borderRadius: 50,
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderWidth: 1,
-    shadowColor: "#000",
-    shadowOffset: {
-	    width: 10,
-	    height: 2,
-    },
-    shadowOpacity: 100,
-    shadowRadius: 0,
-    elevation: 5,
-  
-  },
-  phaseButtonInactive:{
+  Calender: {
     backgroundColor: '#ECE5C7',
-    borderRadius: 50,
-    paddingVertical: 10,
-    paddingHorizontal: 30,
     borderWidth: 1,
-  
+    borderRadius: wp('2%'),
+    padding: wp('4%'),
   },
-
-  phaseButtonText:{
-    fontSize: 15,
-  }
-})
+  buttonContainer: {
+    flex: 1,
+    marginVertical: hp('2%'),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  phaseButtonActive: {
+    backgroundColor: '#CDC2AE',
+    borderRadius: wp('12%'),
+    paddingVertical: hp('2%'),
+    paddingHorizontal: wp('3%'),
+    borderWidth: 1,
+    elevation: 5,
+  },
+  phaseButtonInactive: {
+    backgroundColor: '#ECE5C7',
+    borderRadius: wp('12%'),
+    paddingVertical: hp('2%'),
+    paddingHorizontal: wp('3%'),
+    borderWidth: 1,
+  },
+  phaseButtonText: {
+    fontSize: wp('3%'),
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    marginTop: hp('2%'),
+    justifyContent: 'center',
+    gap: wp('4%'),
+    width: '100%',
+  },
+  cancelButton: {
+    backgroundColor: '#555',
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: wp('5%'),
+    borderRadius: wp('12%'),
+    width: wp('20%'),
+  },
+  cancelButtonText: {
+    color: 'white',
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  modelText: {
+    fontWeight: '600',
+    fontSize: wp('3%'),
+    textAlign: 'center',
+  },
+});

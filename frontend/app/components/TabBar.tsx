@@ -1,14 +1,39 @@
-import { View, Platform, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  View,
+  Platform,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Keyboard,
+} from 'react-native';
 import { useLinkBuilder, useTheme } from '@react-navigation/native';
-import { Text, PlatformPressable } from '@react-navigation/elements';
+import { PlatformPressable } from '@react-navigation/elements';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const { colors } = useTheme();
   const { buildHref } = useLinkBuilder();
 
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyboardVisible(true);
+    });
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardVisible(false);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
+
+  if (isKeyboardVisible) return null;
+
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -22,9 +47,10 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 
         const IconComponent = options.tabBarIcon
           ? options.tabBarIcon({
-              color: isFocused ? 'black' : colors.text, size: 24,
-              focused: false
-          }) // Set icon size
+              color: isFocused ? 'black' : colors.text,
+              size: 24,
+              focused: isFocused,
+            })
           : null;
 
         const onPress = () => {
@@ -47,19 +73,13 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarButtonTestID}
             onPress={onPress}
-            style={{ flex: 1, alignItems: 'center' }} // Align icons and text
+            style={{ flex: 1, alignItems: 'center' }}
           >
-            <View style={isFocused?styles.circle:null}>
-            {IconComponent} 
-            </View>
-            {/* 🔹 Render the icon */}
-            {/* <Text style={{ color: isFocused ? colors.primary : colors.text, textAlign: 'center' }}>
-            {label}
-            </Text> */}
+            <View style={isFocused ? styles.circle : null}>{IconComponent}</View>
           </PlatformPressable>
         );
       })}
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -72,14 +92,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 10,
     flexDirection: 'row',
-    marginHorizontal: 30  ,
+    marginHorizontal: 30,
     justifyContent: 'space-around',
     alignItems: 'center',
     paddingVertical: 10,
   },
-  circle:{
+  circle: {
     padding: 10,
-    backgroundColor:'#CDC2AE',
-    borderRadius: '50%'
-  }
+    backgroundColor: '#CDC2AE',
+    borderRadius: 9999,
+  },
 });
