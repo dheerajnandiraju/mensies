@@ -56,7 +56,7 @@ export default function Chatbot() {
       style={styles.container}
     >
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.push('/(tabs)/notification')}>
+        <TouchableOpacity onPress={() => router.push('/(tabs)')}>
         <Ionicons name="arrow-back" size={28} color="#333" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Chatbot</Text>
@@ -96,7 +96,7 @@ export default function Chatbot() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E9F6EC',
+    backgroundColor: '#C2DED1',
   },
   chatContent: {
     padding: 12,
@@ -109,11 +109,11 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   userMessage: {
-    backgroundColor: '#A6CF98',
+    backgroundColor: '#CDC2AE',
     alignSelf: 'flex-end',
   },
   botMessage: {
-    backgroundColor: '#D2E3C8',
+    backgroundColor: '#ECE5C7',
     alignSelf: 'flex-start',
   },
   messageText: {
@@ -125,8 +125,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     flexDirection: 'row',
     padding: 8,
-    backgroundColor: '#ffffff',
-    borderTopWidth: 1,
+   // backgroundColor: '#CDC2AE',
+   // borderTopWidth: 1,
     borderTopColor: '#ccc',
     alignItems: 'center',
     width: '100%',
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     paddingHorizontal: 16,
     paddingVertical: 8,
-    backgroundColor: '#557C55',
+    backgroundColor: '#354259',
     borderRadius: 20,
   },
   sendText: {
