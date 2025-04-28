@@ -13,6 +13,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { askChatbot } from '../chatbot';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 interface ChatMessage {
   id: string;
@@ -99,13 +100,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#C2DED1',
   },
   chatContent: {
-    padding: 12,
+    padding: wp('3%'),
     paddingBottom: 80,
   },
   messageContainer: {
-    marginVertical: 6,
+    marginVertical: hp('2%'),
     maxWidth: '80%',
-    padding: 10,
+    padding: wp('2%'),
     borderRadius: 12,
   },
   userMessage: {
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
   },
   messageText: {
     color: '#333',
-    fontSize: 16,
+    fontSize: wp('4%'),
   },
   inputContainer: {
     position: 'absolute',
@@ -133,16 +134,16 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 40,
-    paddingHorizontal: 12,
+    height: hp('5%'),
+    paddingHorizontal: hp('1.5%'),
     backgroundColor: '#F2F2F2',
     borderRadius: 20,
-    fontSize: 16,
+    fontSize: wp('4%'),
   },
   sendButton: {
-    marginLeft: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    marginLeft: wp('2%'),
+    paddingHorizontal: wp('4%'),
+    paddingVertical: hp('1%'),
     backgroundColor: '#354259',
     borderRadius: 20,
   },
@@ -153,17 +154,17 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: hp('2%'),
     paddingTop: Platform.OS === 'ios' ? 50 : 30,
-    paddingBottom: 10,
+    paddingBottom: hp('1%'),
     backgroundColor: '#E9F6EC',
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: wp('6%'),
     fontWeight: 'bold',
-    marginLeft: 12,
+    marginLeft: wp('2%'),
     color: '#333',
   },
   
