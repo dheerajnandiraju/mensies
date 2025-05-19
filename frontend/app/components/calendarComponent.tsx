@@ -51,7 +51,7 @@ export default function CalendarComponent({selected}:{selected:String}) {
             
             markingType={'period'}
             markedDates={selected==='menstrual'?menstrualDates:conceptionDates}
-
+             monthFormat={'MMMM yyyy'}
             style={{
              borderWidth: 2,
             borderRadius: 10,
