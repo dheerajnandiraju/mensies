@@ -21,11 +21,11 @@ export default function Index() {
 
         <View style={styles.buttonContainer}>
           <Pressable style={styles.button} onPress={() => router.push('/SignUp')}>
-            <Text style={{fontSize: RFPercentage(3)}}>Sign up</Text>
+            <Text style={[styles.buttonLabel, {fontSize: RFPercentage(3)}]}>Sign up</Text>
           </Pressable>
 
           <Pressable style={styles.button} onPress={() => router.push('/SignIn')}>
-            <Text style={{fontSize: RFPercentage(3)}}>Sign in</Text>
+            <Text style={[styles.buttonLabel,{fontSize: RFPercentage(3)}]}>Sign in</Text>
           </Pressable>
         </View>
       </View>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   text: {
-    color: '##000000',
+    color: '#fff',
     fontWeight: '600',
     fontSize: wp('4.5%'),
     marginBottom: hp('5%'),

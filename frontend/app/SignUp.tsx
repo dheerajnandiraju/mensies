@@ -49,7 +49,7 @@ const router = useRouter();
 
 
 
-            {/* Date of Birth */}
+            Date of Birth
             <Text style={styles.label}>Date of Birth</Text>
             <TextInput
                 style={styles.input}
@@ -97,17 +97,17 @@ const router = useRouter();
 
 
 
-            <View style={styles.divider} />
+            {/* <View style={styles.divider} /> */}
 
 
 
-            <TouchableOpacity style={styles.googleButton} onPress={() => router.push('/IrregularPeriods')}> 
+            {/* <TouchableOpacity style={styles.googleButton} onPress={() => router.push('/IrregularPeriods')}> 
                 <Image
                     source={{ uri: 'https://developers.google.com/identity/images/g-logo.png' }}
                     style={styles.googleLogo}
                 />
                 <Text style={styles.googleButtonText}>Sign in with Google</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     </ScrollView>
     );

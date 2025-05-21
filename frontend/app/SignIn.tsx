@@ -34,7 +34,7 @@ const [password, setPassword] = useState('');
         </View>
 
 
-
+<View style={styles.formContainer}></View>
         {/* Username */}
         <Text style={styles.label}>Username</Text>
         <TextInput
@@ -47,7 +47,7 @@ const [password, setPassword] = useState('');
 
 
 
-        {/* Date of Birth */}
+        {/* Date of Birth
         <Text style={styles.label}>Date of Birth</Text>
         <TextInput
           style={styles.input}
@@ -55,7 +55,9 @@ const [password, setPassword] = useState('');
           placeholderTextColor="#aaa"
           value={dob}
           onChangeText={setDob}
-        />
+        /> */}
+
+
 
 
 
@@ -75,18 +77,18 @@ const [password, setPassword] = useState('');
         {/* Sign In */}
         <TouchableOpacity style={styles.button} onPress={() =>{
           console.log("Username:", username);
-          console.log("DOB:", dob);
+          //console.log("DOB:", dob);
           console.log("Password:", password);
          router.push('/IrregularPeriods');
         }}>
           <Text style={styles.buttonLabel}>Sign in</Text>
         </TouchableOpacity>
-        <View style={styles.divider} />
+        {/* <View style={styles.divider} /> */}
 
 
-
+{/* 
         {/* Google Sign Up */}
-        <TouchableOpacity style={styles.googleButton} onPress={() =>
+        {/* <TouchableOpacity style={styles.googleButton} onPress={() =>
           {
             console.log("Google Sign In pressed");
             router.push('/IrregularPeriods'); }}>
@@ -97,7 +99,8 @@ const [password, setPassword] = useState('');
             style={styles.googleLogo}
           />
           <Text style={styles.googleButtonText}>Sign in with Google</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>  */}
+        
       </View>
     </ScrollView>
   );
@@ -111,6 +114,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#C2DED1',
     paddingHorizontal: wp('5%'),
     paddingTop: hp('8%'),
+  },
+  formContainer: {
+    marginTop: hp('10%'), // This pushes the form down
   },
 
   backButton: {
