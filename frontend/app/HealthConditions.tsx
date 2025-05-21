@@ -1,123 +1,154 @@
+
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Image, StyleSheet } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {View,Text,TouchableOpacity,ScrollView,Image,StyleSheet,} from 'react-native';
+import {widthPercentageToDP as wp,heightPercentageToDP as hp,} from 'react-native-responsive-screen';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
-// ✅ Correct image path
 const PlaceholderImage = require('../assets/images/Frame 60.png');
-
-// ✅ Custom Checkbox Button Component
-// ✅ Type definition for props
 type CheckBoxButtonProps = {
   label: string;
   selected: boolean;
   onPress: () => void;
 };
 
-// ✅ Updated to accept props
-const CheckBoxButton: React.FC<CheckBoxButtonProps> = ({ label, selected, onPress }) => {
+const CheckBoxButton: React.FC<CheckBoxButtonProps> = ({
+  label,
+  selected,
+  onPress,
+}) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      <MaterialIcons
-        name={selected ? 'check-box' : 'check-box-outline-blank'}
-        size={wp('5%')}
-        color="#000000"
-        style={{ marginRight: wp('10%') }}
-      />
+      <View style={styles.checkbox}>
+        {selected && <View style={styles.innerCircle} />}
+      </View>
       <Text style={styles.buttonLabel}>{label}</Text>
     </TouchableOpacity>
   );
 };
 
-
 const HealthConditions = () => {
-const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const router = useRouter();
 
-  const router = useRouter(); 
-const handlePress = (option: string) => {
-  setSelectedOption(option); // ✅ No more TS error
-  router.push('/LastMonthPeriod');
-};
+  const options = [
+    'None',
+    'Yeast infection',
+    'Urinary tract infection',
+    'Bacterial vaginosis',
+    'Polycystic ovary syndrome (PCOS)',
+    'Endometriosis',
+    'Fibroids',
+    'I am not sure',
+    'No, none of the above',
+  ];
 
+  const handleSelect = (label: string) => {
+    if (selectedOptions.includes(label)) {
+      setSelectedOptions(selectedOptions.filter((option) => option !== label));
+    } else {
+      setSelectedOptions([...selectedOptions, label]);
+    }
+  };
 
-
+  const handleNext = () => {
+    if (selectedOptions.length > 0) {
+      console.log('selected options:' ,selectedOptions);
+      console.log('Input:',selectedOptions);
+      router.push('/LastMonthPeriod');
+    }
+  };
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
-        {/* Logo and Title */}
-        <View style={styles.imageTextContainer}>
+        {/* Back Button */}
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <Ionicons name="arrow-back" size={28} color="#000" />
+        </TouchableOpacity>
+
+        {/* Logo Row */}
+        <View style={styles.logoRow}>
           <Image source={PlaceholderImage} style={styles.image} />
-          <Text style={styles.text}>Syla.</Text>
+          <Text style={styles.logoText}>Syla.</Text>
         </View>
-        
+
         {/* Question */}
         <Text style={styles.question}>
           Do you have any health conditions related to your periods?
         </Text>
 
-        {[
-          'Yeast infection',
-          'Urinary tract infection',
-          'bacterial vaginosis',
-          'polycystic ovary syndrome(pcos)',
-          'endometriosis',
-          'fibroids',
-          'i am not sure',
-          'no, none of the above'
-        ].map((label) => (
+        {/* Options */}
+        {options.map((label) => (
           <CheckBoxButton
             key={label}
             label={label}
-            selected={selectedOption === label}
-            onPress={() => handlePress(label)}
+            selected={selectedOptions.includes(label)}
+            onPress={() => handleSelect(label)}
           />
         ))}
+
+        {/* Next Button */}
+        {selectedOptions.length > 0 && (
+          <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
+            <Text style={styles.nextButtonText}>Next</Text>
+          </TouchableOpacity>
+        )}
       </View>
     </ScrollView>
   );
 };
 
-// ✅ Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: '#C2DED1',
-    paddingTop: hp('5%'),
-    paddingHorizontal: wp('5%'),
-  },
-  imageTextContainer: {
     alignItems: 'center',
+    justifyContent: 'flex-start',
+    padding: wp('5%'),
+    paddingTop: hp('6%'),
+  },
+  backButton: {
+    position: 'absolute',
+    top: hp('6%'),
+    left: wp('5%'),
+    zIndex: 1,
+  },
+  logoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: hp('2%'),
     marginBottom: hp('3%'),
+  },
+  logoText: {
+    fontSize: RFPercentage(6),
+    fontWeight: '600',
+    marginLeft: wp('3.5%'),
+    color: '#000',
   },
   image: {
     width: wp('30%'),
-    height: wp('30%'),
+    height: hp('30%'),
+    borderRadius: 999,
     resizeMode: 'contain',
   },
-  text: {
-    color: '#000000',
-    fontWeight: '600',
-    fontSize: wp('10%'),
-  },
   question: {
-    fontSize: RFPercentage(2.8),
+    fontSize: RFPercentage(2.7),
     textAlign: 'center',
+    marginTop: hp('-7%'),
     marginBottom: hp('4%'),
-    width: wp('90%'),
+    width: wp('100%'),
   },
   button: {
     flexDirection: 'row',
     backgroundColor: '#fff',
-    borderRadius: 15,
+    borderRadius: wp('5%'),
     paddingVertical: hp('2%'),
-    paddingHorizontal: wp('8%'),
+    paddingHorizontal: wp('3%'),
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    width: wp('80%'),
+    width: wp('87%'),
     marginBottom: hp('2%'),
   },
   buttonLabel: {
@@ -125,7 +156,37 @@ const styles = StyleSheet.create({
     fontSize: wp('4.5%'),
     fontWeight: '500',
   },
+  checkbox: {
+    height: wp('8%'),
+    width: wp('8%'),
+    borderRadius: wp('4%'),
+    borderWidth: 3,
+    borderColor: '#000',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: wp('5%'),
+    backgroundColor: '#fff',
+    overflow: 'hidden',
+  },
+  innerCircle: {
+    height: wp('4.5%'),
+    width: wp('4.5%'),
+    borderRadius: wp('2%'),
+    backgroundColor: '#354259',
+  },
+  nextButton: {
+    backgroundColor: '#354259',
+    paddingVertical: hp('2%'),
+    paddingHorizontal: wp('20%'),
+    borderRadius: wp('5%'),
+    marginTop: hp('4%'),
+    marginBottom: hp('3%'),
+  },
+  nextButtonText: {
+    color: '#fff',
+    fontSize: RFPercentage(2.5),
+    fontWeight: '600',
+  },
 });
 
 export default HealthConditions;
-
